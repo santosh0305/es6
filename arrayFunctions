@@ -1,0 +1,78 @@
+var numbers  = [1,2,2,2,3,4,5,6];
+
+// get even numbers
+var numberSet  = numbers.filter(function(number){
+ return number %2 == 0
+})
+console.log(numberSet);
+
+// get distinct values : 1,2,3,4,5,6
+var numberSetResult = numbers.reduce(function(accumulator,value){
+ return accumulator + value;
+});
+console.log(numberSetResult);
+
+// sum of all numbers
+var sumOfNumbers = sumOfNumbers.reduce(function(accumulator,value){
+ return accumulator+value;
+},0);
+console.log(sumOfNumbers);
+
+//know how many of each item are in the collection
+const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig' ];
+const count = fruitBasket.reduce((tally,fruit) => {
+ tally[fruit] = (tally[fruit] || 0) + 1 ;
+  return tally;
+},{});
+console.table(count);
+
+// get sum of all prices
+const basketItems = [
+ {
+    productName: 'Lenovo Carbon',
+    price: 2145
+  },
+  {
+    productName: 'Macbook Pro',
+    price: 3111
+  },
+  {
+    productName: 'Google Home',
+    price: 250
+  }
+]
+let basketSum = basketItems.reduce((acc, basketItem) => {
+ return acc + basketItem.price
+}, 0); // Take notice of last argument is a number
+console.log("sum in basket", basketSum);
+
+// flatten multiple arrays
+const multipleArrays = [["Leonardo", "Rafael", "Donatello"], ["Michaelangelo", "April", "Splinter"], ["Shredder", "B-Bob", "Rock Steady"]];
+var flattenedArray = multipleArrays.reduce(function(accumulator,item){
+ return accumulator.concat(item)
+},[]);
+console.table(flattenedArray);
+Sidenote:
+If you don’t pass an initial value, reduce will take the first item in your array as the initial value
+Always remember to return the accumulator. For reduce to work you must always return a value.
+Reduce can transform any array into a single value
+Is most use cases you would use reduce to transform arrays into either a number, object or a new array
+
+// get all colors
+const data = [
+  {a: 'happy', b: 'robin', c: ['blue','green']},
+  {a: 'tired', b: 'panther', c: ['green','black','orange','blue']},
+  {a: 'sad', b: 'goldfish', c: ['green','red']}
+];
+
+var count = data.reduce((acc,amount)=>{
+  amount.c.forEach((color)=>{
+   acc.push(color);
+  })
+  return acc
+},[])
+console.table(count);
+
+// Spread Operator (apply on array)
+const movies = ["Leon", "Love Actually", "Lord of the Rings"];
+console.log(...movies);
